@@ -38,7 +38,7 @@ function createWindow() {
         }
     ])
 
-	mainWindow.webContents.openDevTools()
+	//mainWindow.webContents.openDevTools()
 
     appIcon.setContextMenu(contextMenu)
 

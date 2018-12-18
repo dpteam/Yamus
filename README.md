@@ -1,7 +1,7 @@
 ![Logo](https://upload.wikimedia.org/wikipedia/commons/2/2c/Yandex_Music_Russian_logo.svg)
-## YandexMusic ##
-[![Build Status](https://travis-ci.org/DartPower/YandexMusic.svg?branch=master)](https://travis-ci.org/DartPower/YandexMusic)
- ![Github All stagings](https://img.shields.io/github/downloads/DartPower/YandexMusic/total.svg)
+## Yamus ##
+[![Build Status](https://travis-ci.org/dpteam/Yamus.svg?branch=master)](https://travis-ci.org/dpteam/Yamus)
+ ![Github All stagings](https://img.shields.io/github/downloads/dpteam/Yamus/total.svg)
  ![Electron Version](https://img.shields.io/badge/Electron-1.8.4-brightgreen.svg)
  
 Unofficial Yandex.Music desktop app

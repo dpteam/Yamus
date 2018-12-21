@@ -2,7 +2,7 @@
 ## Yamus ##
 [![Build Status](https://travis-ci.org/dpteam/Yamus.svg?branch=master)](https://travis-ci.org/dpteam/Yamus)
  ![Github All stagings](https://img.shields.io/github/downloads/dpteam/Yamus/total.svg)
- ![Electron Version](https://img.shields.io/badge/Electron-1.8.4-brightgreen.svg)
+ ![Electron Version](https://img.shields.io/badge/Electron-4.0.0-brightgreen.svg)
  
 Unofficial Yandex.Music desktop app
 

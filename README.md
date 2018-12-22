@@ -1,5 +1,6 @@
 ![Logo](https://upload.wikimedia.org/wikipedia/commons/2/2c/Yandex_Music_Russian_logo.svg)
 ## Yamus ##
+[![DepShield Badge](https://depshield.sonatype.org/badges/dpteam/Yamus/depshield.svg)](https://depshield.github.io)
 [![Build Status](https://travis-ci.org/dpteam/Yamus.svg?branch=master)](https://travis-ci.org/dpteam/Yamus)
  ![Github All stagings](https://img.shields.io/github/downloads/dpteam/Yamus/total.svg)
  ![Electron Version](https://img.shields.io/badge/Electron-4.0.0-brightgreen.svg)

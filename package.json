@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "dependencies": {
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "mocha": "^6.0.2",
     "spectron": "^5.0.0"
   },

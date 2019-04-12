@@ -4,7 +4,7 @@
   "main": "main.js",
   "dependencies": {
     "eslint": "^5.16.0",
-    "mocha": "^6.0.2",
+    "mocha": "^6.1.2",
     "spectron": "^5.0.0"
   },
   "engines": {

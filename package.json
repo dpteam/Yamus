@@ -5,7 +5,7 @@
   "dependencies": {
     "eslint": "^7.21.0",
     "mocha": "^8.3.1",
-    "spectron": "^13.0.0"
+    "spectron": "^14.0.0"
   },
   "engines": {
     "node": ">=9.2.0"

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "main.js",
   "dependencies": {
-    "spectron": "^14.0.0"
+    "spectron": "^14.0.0",
     "eslint": "^7.22.0",
-    "mocha": "^8.3.2",
+    "mocha": "^8.3.2"
   },
   "engines": {
     "node": ">=9.2.0"

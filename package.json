@@ -4,7 +4,7 @@
   "main": "main.js",
   "dependencies": {
     "spectron": "^15.0.0",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "mocha": "^9.0.0"
   },
   "engines": {
@@ -18,7 +18,7 @@
     "build-linux": "electron-packager . Yamus --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=staging-builds"
   },
   "devDependencies": {
-    "electron": "^13.1.0",
+    "electron": "^13.1.2",
     "electron-builder": "^22.11.5",
     "electron-packager": "^15.2.0"
   }

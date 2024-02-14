@@ -2,8 +2,8 @@
 ## Yamus ##
 [![DepShield Badge](https://depshield.sonatype.org/badges/dpteam/Yamus/depshield.svg)](https://depshield.github.io)
 ![Build Status](https://github.com/dpteam/Yamus/workflows/main/badge.svg)](https://github.com/dpteam/Yamus/actions/workflows/main.yml)
-![Github All stagings](https://img.shields.io/github/downloads/dpteam/Yamus/total.svg)
-![Electron Version](https://img.shields.io/badge/Electron-28.0.0-brightgreen.svg)
+[![Github All stagings](https://img.shields.io/github/downloads/dpteam/Yamus/total.svg)
+[![Electron Version](https://img.shields.io/badge/Electron-28.0.0-brightgreen.svg)
  
 Unofficial Yandex.Music Desktop App
 

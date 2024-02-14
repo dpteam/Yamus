@@ -3,7 +3,6 @@ name: Build
 on:
   # Trigger the workflow on push or pull request,
   # but only for the main branch
-  # Snapcraft Token Valid till 10 March, 2023
   push:
     branches:
       - main
@@ -22,11 +21,7 @@ jobs:
         node-version: '16'
     - name: Install Snapcraft
       uses: samuelmeuli/action-snapcraft@v1.2.0
-      with:
-        snapcraft_token: ${{ secrets.SNAPCRAFT_TOKEN }}
     - name: Build it
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm install
         sudo apt install flatpak flatpak-builder elfutils
@@ -52,19 +47,7 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-    - name: Prepare for app signing and notarization
-      env:
-        API_KEY: ${{ secrets.api_key }}
-      if: ${{ env.API_KEY }}
-      run: |
-        echo "CSC_LINK=${{ secrets.mac_cert }}" >> $GITHUB_ENV
-        echo "CSC_KEY_PASSWORD=${{ secrets.mac_cert_password }}" >> $GITHUB_ENV
-        echo "APPLE_ID=${{ secrets.apple_id }}" >> $GITHUB_ENV
-        echo "APPLE_ID_PASSWORD=${{ secrets.apple_id_password }}" >> $GITHUB_ENV
-        echo "TEAM_ID=${{ secrets.team_id }}" >> $GITHUB_ENV
     - name: Build it
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm install
         npm install appdmg --save-dev
@@ -82,8 +65,6 @@ jobs:
       with:
         node-version: '16'
     - name: Build it
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm install
         npm run publish

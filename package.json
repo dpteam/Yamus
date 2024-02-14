@@ -1,25 +1,39 @@
 {
   "name": "Yamus",
-  "version": "1.0.0",
+  "productName": "Yamus",
+  "version": "2.0.0",
+  "description": "Yandex.Music Desktop App",
   "main": "main.js",
-  "dependencies": {
-    "spectron": "^15.0.0",
-    "mocha": "^9.2.0",
-    "eslint": "^8.7.0"
-  },
-  "engines": {
-    "node": ">=9.2.0"
-  },
   "scripts": {
-    "test": "mocha --timeout 80000",
-    "start": "electron .",
-    "build-win": "electron-packager . Yamus --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=staging-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Yandex.Music Unofficial desktop app\"",
-    "build-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=staging-builds",
-    "build-linux": "electron-packager . Yamus --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=staging-builds"
+    "start": "electron-forge start",
+    "dist": "electron-builder",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
+  "keywords": [
+    "Yandex",
+    "Music",
+    "Unofficial",
+	"Desktop",
+    "App"
+  ],
+  "author": "DartPower Team",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^16.0.8",
-    "electron-builder": "^22.14.5",
-    "electron-packager": "^15.4.0"
+    "@electron-forge/cli": "latest",
+    "@electron-forge/maker-deb": "latest",
+    "@electron-forge/maker-dmg": "latest",
+    "@electron-forge/maker-flatpak": "latest",
+    "@electron-forge/maker-rpm": "latest",
+    "@electron-forge/maker-snap": "latest",
+    "@electron-forge/maker-squirrel": "latest",
+    "@electron-forge/maker-zip": "latest",
+    "@electron-forge/publisher-github": "latest",
+    "@electron-forge/publisher-snapcraft": "latest",
+    "electron": "^28.0.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
   }
 }

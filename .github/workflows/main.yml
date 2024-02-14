@@ -1,32 +1,93 @@
-# This is a basic workflow to help you get started with Actions
+name: Build
 
-name: CI
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  # Snapcraft Token Valid till 10 March, 2023
   push:
-    branches: [ master ]
+    branches:
+      - main
   pull_request:
-    branches: [ master ]
+    branches:
+      - main
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build-linux:
+    name: Linux
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Electron Builder Action
-        uses: samuelmeuli/action-electron-builder@v1.6.0
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    - name: Install Snapcraft
+      uses: samuelmeuli/action-snapcraft@v1.2.0
+      with:
+        snapcraft_token: ${{ secrets.SNAPCRAFT_TOKEN }}
+    - name: Build it
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        npm install
+        sudo apt install flatpak flatpak-builder elfutils
+        npm run package && cd "out/Yamus-x64" && ls
+        npm run make && npm run publish
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Linux
+        path: out/make/*
+    - name: Use Snapcraft
+      run: |
+        snapcraft --help
+        snapcraft upload --release=stable "out/make/Yamus-x64.snap"
+  
+  build-mac:
+    name: macOS
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Prepare for app signing and notarization
+      env:
+        API_KEY: ${{ secrets.api_key }}
+      if: ${{ env.API_KEY }}
+      run: |
+        echo "CSC_LINK=${{ secrets.mac_cert }}" >> $GITHUB_ENV
+        echo "CSC_KEY_PASSWORD=${{ secrets.mac_cert_password }}" >> $GITHUB_ENV
+        echo "APPLE_ID=${{ secrets.apple_id }}" >> $GITHUB_ENV
+        echo "APPLE_ID_PASSWORD=${{ secrets.apple_id_password }}" >> $GITHUB_ENV
+        echo "TEAM_ID=${{ secrets.team_id }}" >> $GITHUB_ENV
+    - name: Build it
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        npm install
+        npm install appdmg --save-dev
+        npm run publish
+    - uses: actions/upload-artifact@v3
+      with:
+        name: macOS
+        path: out/make/*
+  build-windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    - name: Build it
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        npm install
+        npm run publish
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Windows
+        path: out/make/squirrel.windows/x64/Yamus.exe
